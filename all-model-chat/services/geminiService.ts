@@ -29,7 +29,17 @@ class GeminiServiceImpl implements GeminiService {
     
     private _getClient(apiKey: string): GoogleGenAIClient {
       try {
-          return new GoogleGenAI({ apiKey });
+            const customBaseUrl = 'https://proxy.huanling.me/gemini';
+            const ai = new GoogleGenAI({
+                apiKey: randomKey,
+                // 通过httpOptions来设置baseUrl
+                httpOptions: {
+                    baseUrl: customBaseUrl,
+                },
+            });
+            return ai
+          
+          // return new GoogleGenAI({ apiKey });
       } catch (error) {
           console.error("Failed to initialize GoogleGenAI client:", error);
           // Re-throw to be caught by the calling function
