@@ -31,7 +31,7 @@ class GeminiServiceImpl implements GeminiService {
       try {
             const customBaseUrl = 'https://proxy.huanling.me/gemini';
             const ai = new GoogleGenAI({
-                apiKey: randomKey,
+                apiKey: apiKey,
                 // 通过httpOptions来设置baseUrl
                 httpOptions: {
                     baseUrl: customBaseUrl,
