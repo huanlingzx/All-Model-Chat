@@ -80,10 +80,12 @@ class ProxyInterceptor {
       }
       proxyUrl += '/v1beta';
     }
+
+    proxyUrl = proxyUrl.replace(/\/v1beta$/, '');
     
     // 执行URL替换
     const transformedUrl = url.replace(
-      `https://${this.config.originalDomain}/v1beta`,
+      `https://${this.config.originalDomain}`,
       proxyUrl
     );
     
