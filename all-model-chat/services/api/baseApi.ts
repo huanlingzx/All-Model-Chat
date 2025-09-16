@@ -23,10 +23,12 @@ export const getClient = (apiKey: string, baseUrl?: string): GoogleGenAI => {
           logService.warn("API key was sanitized. Non-ASCII characters were replaced.");
       }
       
-      // const config: any = { apiKey: sanitizedApiKey };
-      const config: any = { apiKey: sanitizedApiKey, httpOptions: {
-                  baseUrl: "https://api-proxy.me/gemini",
-              }};
+      const config: any = { apiKey: sanitizedApiKey };
+    //   const config: any = { apiKey: sanitizedApiKey, httpOptions: {
+    //               baseUrl: baseUrl,
+    //           }};
+
+    //   logService.info(`Using custom base URL: ${baseUrl}`);
       if (baseUrl) {
           // 尝试多种可能的配置参数名
           config.baseURL = baseUrl;  // 注意大写 URL

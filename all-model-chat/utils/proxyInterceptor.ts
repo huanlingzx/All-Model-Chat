@@ -81,12 +81,18 @@ class ProxyInterceptor {
       }
       proxyUrl += '/v1beta';
     }
-    
-    // 执行URL替换
+
+    const finalProxyBaseUrl = proxyUrl.replace(/\/v1beta$/, '');
     const transformedUrl = url.replace(
-      `https://${this.config.originalDomain}/v1beta`,
-      proxyUrl
+      `https://${this.config.originalDomain}`, 
+      finalProxyBaseUrl
     );
+
+    // 执行URL替换  
+    // const transformedUrl = url.replace(
+    //   `https://${this.config.originalDomain}/v1beta`,
+    //   proxyUrl
+    // );
     
     console.log('🔄 [ProxyInterceptor] 代理请求:', url, '->', transformedUrl);
     return transformedUrl;
